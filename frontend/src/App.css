@@ -1,0 +1,254 @@
+/* --- RESET E CONFIGURAÇÕES GLOBAIS --- */
+:root {
+  --cor-primaria: #0d1b2a;      /* Azul Escuro Quase Preto */
+  --cor-secundaria: #1b263b;   /* Azul Marinho */
+  --cor-terciaria: #415a77;    /* Cinza Azulado */
+  --cor-fundo: #f8f9fa;         /* Fundo Cinza Claro */
+  --cor-texto: #e0e1dd;         /* Texto Claro */
+  --cor-destaque: #3498db;      /* Azul Destaque */
+  --cor-sucesso: #2ecc71;       /* Verde */
+  --cor-perigo: #e74c3c;        /* Vermelho */
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --borda-radius: 8px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: #333;
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+header {
+  background-color: var(--cor-primaria);
+  padding: 1.5rem 2rem;
+  color: var(--cor-texto);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+nav a {
+  color: var(--cor-texto);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--borda-radius);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+nav a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--cor-destaque);
+  transition: all 0.3s ease-out;
+}
+
+nav a:hover:after, nav a.active:after {
+  left: 0;
+  width: 100%;
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+main {
+  padding: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* --- CARDS E FORMULÁRIOS --- */
+.form-card, .list-card {
+  background-color: white;
+  border-radius: var(--borda-radius);
+  box-shadow: var(--sombra);
+  padding: 2rem;
+  margin-top: 2rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-card:hover, .list-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+
+.form-card h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--cor-secundaria);
+  border-bottom: 2px solid var(--cor-fundo);
+  padding-bottom: 0.5rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--borda-radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box; /* Garante que padding não afete a largura */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--cor-destaque);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* --- BOTÕES --- */
+button {
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--borda-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button[type="submit"] {
+  background-color: var(--cor-destaque);
+}
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-group button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.edit-btn { background-color: var(--cor-terciaria); }
+.edit-btn:hover { background-color: #5a7a9e; }
+
+.delete-btn { background-color: var(--cor-perigo); }
+.delete-btn:hover { background-color: #c0392b; }
+
+.save-btn { background-color: var(--cor-sucesso); }
+.save-btn:hover { background-color: #27ae60; }
+
+
+/* --- LISTAS --- */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: var(--cor-fundo);
+  padding: 1rem 1.5rem;
+  border-radius: var(--borda-radius);
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--cor-destaque);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #e9ecef;
+}
+
+li span {
+    font-weight: 500;
+}
+
+/* --- MODAL DE EDIÇÃO --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: var(--borda-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    text-align: left;
+    font-size: 1.8rem;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--cor-secundaria);
+}
+
+.modal-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-actions .save-btn {
+    background-color: var(--cor-sucesso);
+}
+
+.modal-actions .save-btn:hover {
+    background-color: #27ae60;
+}
+
+/* Estilo para o botão de cancelar no modal */
+.modal-actions button[type="button"] {
+    background-color: var(--cor-perigo);
+}
+
+.modal-actions button[type="button"]:hover {
+    background-color: #c0392b; /* Vermelho mais escuro */
+}
