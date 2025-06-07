@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-// A mudança crucial: salvar o banco de dados na pasta /tmp
+// Importante: salva o banco de dados na pasta /tmp
 const dbPath = path.resolve('/tmp', 'barbearia.db');
 
 const db = new sqlite3.Database(dbPath, (err) => {

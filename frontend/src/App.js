@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Clientes from './pages/Clientes';
 import Agendamentos from './pages/Agendamentos';
-import Servicos from './pages/Servicos'; // Importe a nova página
+import Servicos from './pages/Servicos';
 import './App.css';
 
 function App() {
@@ -14,14 +14,14 @@ function App() {
                     <nav>
                         <Link to="/clientes">Clientes</Link>
                         <Link to="/agendamentos">Agendamentos</Link>
-                        <Link to="/servicos">Serviços</Link> {/* Adicione o novo link */}
+                        <Link to="/servicos">Serviços</Link>
                     </nav>
                 </header>
                 <main>
                     <Routes>
                         <Route path="/clientes" element={<Clientes />} />
                         <Route path="/agendamentos" element={<Agendamentos />} />
-                        <Route path="/servicos" element={<Servicos />} /> {/* Adicione a nova rota */}
+                        <Route path="/servicos" element={<Servicos />} />
                         <Route path="/" element={<Clientes />} />
                     </Routes>
                 </main>

@@ -9,17 +9,17 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Importar rotas
+// Importa rotas
 const clienteRoutes = require('./routes/clienteRoutes');
 const agendamentoRoutes = require('./routes/agendamentoRoutes');
-const servicoRoutes = require('./routes/servicoRoutes'); // Importe as novas rotas
+const servicoRoutes = require('./routes/servicoRoutes');
 
-// Usar rotas
+// Usa rotas
 app.use('/clientes', clienteRoutes);
 app.use('/agendamentos', agendamentoRoutes);
-app.use('/servicos', servicoRoutes); // Use as novas rotas
+app.use('/servicos', servicoRoutes);
 
-// Iniciar o servidor
+// Inicia o servidor
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor backend rodando em http://localhost:${PORT}`);
+    console.log(`Servidor backend rodando em http://localhost:${PORT}`);
 });

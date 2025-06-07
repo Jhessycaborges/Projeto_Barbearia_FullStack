@@ -1,6 +1,6 @@
 const db = require('../database');
 
-// Listar todos os serviços
+// Lista todos os serviços
 exports.listar = (req, res) => {
     const sql = "SELECT * FROM servicos";
     db.all(sql, [], (err, rows) => {
@@ -9,7 +9,7 @@ exports.listar = (req, res) => {
     });
 };
 
-// Criar um novo serviço
+// Cria um novo serviço
 exports.criar = (req, res) => {
     const { nome, preco } = req.body;
     const sql = "INSERT INTO servicos (nome, preco) VALUES (?, ?)";
@@ -19,7 +19,7 @@ exports.criar = (req, res) => {
     });
 };
 
-// Atualizar um serviço
+// Atualiza um serviço
 exports.atualizar = (req, res) => {
     const { id } = req.params;
     const { nome, preco } = req.body;
@@ -30,7 +30,7 @@ exports.atualizar = (req, res) => {
     });
 };
 
-// Deletar um serviço
+// Deleta um serviço
 exports.deletar = (req, res) => {
     const { id } = req.params;
     const sql = "DELETE FROM servicos WHERE id = ?";

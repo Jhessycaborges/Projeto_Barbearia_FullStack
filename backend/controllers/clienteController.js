@@ -1,6 +1,6 @@
 const db = require('../database');
 
-// Listar todos os clientes
+// Lista todos os clientes
 exports.listar = (req, res) => {
     const sql = "SELECT * FROM clientes";
     db.all(sql, [], (err, rows) => {
@@ -12,7 +12,7 @@ exports.listar = (req, res) => {
     });
 };
 
-// Criar um novo cliente
+// Cria um novo cliente
 exports.criar = (req, res) => {
     const { nome, telefone } = req.body;
     const sql = "INSERT INTO clientes (nome, telefone) VALUES (?, ?)";
@@ -25,7 +25,7 @@ exports.criar = (req, res) => {
     });
 };
 
-// Atualizar um cliente existente
+// Atualiza um cliente existente
 exports.atualizar = (req, res) => {
     const { id } = req.params;
     const { nome, telefone } = req.body;
@@ -39,7 +39,7 @@ exports.atualizar = (req, res) => {
     });
 };
 
-// Deletar um cliente
+// Deleta um cliente
 exports.deletar = (req, res) => {
     const { id } = req.params;
     const sql = "DELETE FROM clientes WHERE id = ?";

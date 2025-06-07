@@ -1,6 +1,6 @@
 const db = require('../database');
 
-// Listar todos os agendamentos
+// Lista todos os agendamentos
 exports.listar = (req, res) => {
     const sql = "SELECT * FROM agendamentos";
     db.all(sql, [], (err, rows) => {
@@ -12,7 +12,7 @@ exports.listar = (req, res) => {
     });
 };
 
-// Criar um novo agendamento
+// Cria um novo agendamento
 exports.criar = (req, res) => {
     const { clienteId, data, servico } = req.body; 
     const sql = "INSERT INTO agendamentos (cliente_id, data, servico) VALUES (?, ?, ?)";
@@ -25,7 +25,7 @@ exports.criar = (req, res) => {
     });
 };
 
-// Atualizar um agendamento existente
+// Atualiza um agendamento existente
 exports.atualizar = (req, res) => {
     const { id } = req.params;
     const { clienteId, data, servico } = req.body;
@@ -39,7 +39,7 @@ exports.atualizar = (req, res) => {
     });
 };
 
-// Deletar um agendamento
+// Deleta um agendamento
 exports.deletar = (req, res) => {
     const { id } = req.params;
     const sql = "DELETE FROM agendamentos WHERE id = ?";

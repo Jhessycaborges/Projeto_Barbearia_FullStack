@@ -9,7 +9,7 @@ function Agendamentos() {
     // Estado do formulário de criação
     const [clienteId, setClienteId] = useState('');
     const [data, setData] = useState('');
-    const [servico, setServico] = useState(''); // Agora vai guardar o nome do serviço selecionado
+    const [servico, setServico] = useState(''); // Vai guardar o nome do serviço selecionado
 
     // Estados para o modal de edição
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,11 +20,11 @@ function Agendamentos() {
         const [agendamentosRes, clientesRes, servicosRes] = await Promise.all([
             axios.get(`${process.env.REACT_APP_API_URL}/agendamentos`),
             axios.get(`${process.env.REACT_APP_API_URL}/clientes`),
-            axios.get(`${process.env.REACT_APP_API_URL}/servicos`) // Busca os serviços
+            axios.get(`${process.env.REACT_APP_API_URL}/servicos`)
         ]);
         setAgendamentos(agendamentosRes.data);
         setClientes(clientesRes.data);
-        setServicos(servicosRes.data); // Guarda os serviços no estado
+        setServicos(servicosRes.data);
     };
 
     useEffect(() => {
