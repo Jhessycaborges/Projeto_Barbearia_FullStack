@@ -18,9 +18,9 @@ function Agendamentos() {
     // Função que busca TODOS os dados necessários para a página
     const fetchData = async () => {
         const [agendamentosRes, clientesRes, servicosRes] = await Promise.all([
-            axios.get('http://localhost:3001/agendamentos'),
-            axios.get('http://localhost:3001/clientes'),
-            axios.get('http://localhost:3001/servicos') // Busca os serviços
+            axios.get(`${process.env.REACT_APP_API_URL}/agendamentos`),
+            axios.get(`${process.env.REACT_APP_API_URL}/clientes`),
+            axios.get(`${process.env.REACT_APP_API_URL}/servicos`) // Busca os serviços
         ]);
         setAgendamentos(agendamentosRes.data);
         setClientes(clientesRes.data);
@@ -35,7 +35,7 @@ function Agendamentos() {
         e.preventDefault();
         if (!clienteId || !servico) return alert('Por favor, selecione um cliente e um serviço.');
         
-        await axios.post('http://localhost:3001/agendamentos', { clienteId, data, servico });
+        await axios.post(`${process.env.REACT_APP_API_URL}/agendamentos`, { clienteId, data, servico });
         setClienteId('');
         setData('');
         setServico('');
@@ -44,7 +44,7 @@ function Agendamentos() {
     
     const handleDelete = async (id) => {
         if (window.confirm("Tem certeza que deseja excluir este agendamento?")) {
-            await axios.delete(`http://localhost:3001/agendamentos/${id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/agendamentos/${id}`);
             fetchData();
         }
     };
@@ -66,7 +66,7 @@ function Agendamentos() {
 
     const handleUpdateAgendamento = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:3001/agendamentos/${editingAgendamento.id}`, {
+        await axios.put(`${process.env.REACT_APP_API_URL}/agendamentos/${editingAgendamento.id}`, {
             clienteId: editingAgendamento.clienteId,
             data: editingAgendamento.data,
             servico: editingAgendamento.servico

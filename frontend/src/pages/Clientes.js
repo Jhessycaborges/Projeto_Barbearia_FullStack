@@ -11,7 +11,7 @@ function Clientes() {
     const [editingCliente, setEditingCliente] = useState(null);
 
     const fetchClientes = async () => {
-        const response = await axios.get('http://localhost:3001/clientes');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/clientes`);
         setClientes(response.data);
     };
 
@@ -21,7 +21,7 @@ function Clientes() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3001/clientes', { nome, telefone });
+        await axios.post(`${process.env.REACT_APP_API_URL}/clientes`, { nome, telefone });
         setNome('');
         setTelefone('');
         fetchClientes();
@@ -29,7 +29,7 @@ function Clientes() {
 
     const handleDelete = async (id) => {
         if (window.confirm("Tem certeza que deseja excluir este cliente?")) {
-            await axios.delete(`http://localhost:3001/clientes/${id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/clientes/${id}`);
             fetchClientes();
         }
     };
@@ -47,7 +47,7 @@ function Clientes() {
 
     const handleUpdateCliente = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:3001/clientes/${editingCliente.id}`, {
+        await axios.put(`${process.env.REACT_APP_API_URL}/clientes/${editingCliente.id}`, {
             nome: editingCliente.nome,
             telefone: editingCliente.telefone
         });

@@ -10,7 +10,7 @@ function Servicos() {
     const [editingServico, setEditingServico] = useState(null);
 
     const fetchServicos = async () => {
-        const response = await axios.get('http://localhost:3001/servicos');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/servicos`);
         setServicos(response.data);
     };
 
@@ -20,7 +20,7 @@ function Servicos() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3001/servicos', { nome, preco: parseFloat(preco) });
+        await axios.post(`${process.env.REACT_APP_API_URL}/servicos`, { nome, preco: parseFloat(preco) });
         setNome('');
         setPreco('');
         fetchServicos();
@@ -28,7 +28,7 @@ function Servicos() {
 
     const handleDelete = async (id) => {
         if (window.confirm("Tem certeza que deseja excluir este serviço?")) {
-            await axios.delete(`http://localhost:3001/servicos/${id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/servicos/${id}`);
             fetchServicos();
         }
     };
@@ -45,7 +45,7 @@ function Servicos() {
 
     const handleUpdateServico = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:3001/servicos/${editingServico.id}`, {
+        await axios.put(`${process.env.REACT_APP_API_URL}/servicos/${editingServico.id}`, {
             nome: editingServico.nome,
             preco: parseFloat(editingServico.preco)
         });
